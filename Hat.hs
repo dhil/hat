@@ -13,6 +13,7 @@ hat file = do
          hSetBuffering fh $ BlockBuffering (Just 4096)
          contents <- hGetContents fh
          putStr contents
+         hClose fh
          return ()
 
 dispatch :: [String] -> IO ()
