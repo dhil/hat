@@ -1,4 +1,4 @@
-# hat
+# Haskell conATenate
 Small concatenate (cat) clone written in Haskell.
 
 # Compilation
