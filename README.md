@@ -1,12 +1,12 @@
 # Haskell conATenate
 Small concatenate (cat) clone written in Haskell.
 
-# Compilation
+## Compilation
 ```
 $ ghc -O2 Hat.hs -o hat
 ```
 
-# Usage
+## Usage
 ```
 $ ./hat "/some/path/to/myfile1" "anotherfile" "/yet/another/file"
 ```
