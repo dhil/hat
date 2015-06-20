@@ -1,6 +1,7 @@
 {-- Haskell implementation of the unix program "cat" --}
 import System.Environment
 import System.IO
+import System.Directory (doesFileExist)
 import System.Exit
 
 
@@ -9,12 +10,15 @@ main = getArgs >>= dispatch
 
 hat :: FilePath -> IO ()
 hat file = do
-         fh <- openFile file ReadMode
-         hSetBuffering fh $ BlockBuffering (Just 4096)
-         contents <- hGetContents fh
-         putStr contents
-         hClose fh
-         return ()
+           exists <- doesFileExist file
+           case exists of
+             True -> do
+                     fh <- openFile file ReadMode
+                     hSetBuffering fh $ BlockBuffering (Just 4096)
+                     contents <- hGetContents fh
+                     putStr contents
+                     hClose fh
+             _    -> putStrLn "File does not exist."
 
 dispatch :: [String] -> IO ()
 dispatch ["-h"] = usage >> exit
